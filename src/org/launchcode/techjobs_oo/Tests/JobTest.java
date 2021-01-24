@@ -20,7 +20,7 @@ public class JobTest {
         test_job_2 = new Job();
         test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         test_job_identical = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        test_job_empty_field = test_job_identical = new Job("Product tester",  new Employer(""), new Location("Desert"), new PositionType(null), new CoreCompetency("Persistence"));
+        test_job_empty_field = new Job("Product tester",  new Employer(""), new Location("Desert"), new PositionType(null), new CoreCompetency("Persistence"));
     }
 
     @Test
@@ -50,14 +50,14 @@ public class JobTest {
     public void testToStringMethod(){
         int stringLength = test_job.toString().length();
 
-        // test for blank line before string
-        assertEquals(test_job.toString().indexOf("\n"), 0);
+        // test for blank line at beginning of string
+        assertEquals(test_job.toString().indexOf("\n\n"), 0);
 
-        // test for blank line after string
-        assertEquals(test_job.toString().substring(stringLength - 1), "\n");
+        // test for blank line at end of string
+        assertEquals(test_job.toString().substring(stringLength - 2), "\n\n");
 
         // test that labels and value are returned, with each field on its own line
-        assertEquals(test_job.toString(),"\n"
+        assertEquals(test_job.toString(),"\n\n"
                 + "ID: " + test_job.getId() + "\n"
                 + "Name: " + test_job.getName() + "\n"
                 + "Employer: " + test_job.getEmployer().getValue() + "\n"
@@ -65,9 +65,9 @@ public class JobTest {
                 + "Position Type: " + test_job.getPositionType().getValue() + "\n"
                 + "Core Competency: " + test_job.getCoreCompetency().getValue() + "\n"
                 + "\n");
-        // test for empty string and return message
+        // test for empty string and returned message
         assertTrue(test_job_empty_field.toString().contains("Employer: Data not available"));
-        // test for null and return message
+        // test for null and returned message
         assertTrue(test_job_empty_field.toString().contains("Position Type: Data not available"));
 
 

@@ -116,7 +116,6 @@ public class Job {
         if (coreCompetencyString == null) {
             coreCompetencyString = "Data not available";
         }
-
         //conditional for empty string passed into constructor
         if (nameString == ""){
             nameString = "Data not available";
@@ -133,7 +132,7 @@ public class Job {
         if (coreCompetencyString == "") {
             coreCompetencyString = "Data not available";
         }
-        return "\n"
+        return "\n\n"
                 + "ID: " + this.getId() + "\n"
                 + "Name: " + nameString + "\n"
                 + "Employer: " + employerString + "\n"
