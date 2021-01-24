@@ -10,11 +10,15 @@ import static org.junit.Assert.*;
 public class JobTest {
     Job test_job_1;
     Job test_job_2;
+    Job test_job;
+    Job test_job_identical;
 
     @Before
     public void createJobObject(){
         test_job_1 = new Job();
         test_job_2 = new Job();
+        test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        test_job_identical = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     }
 
     @Test
@@ -24,7 +28,6 @@ public class JobTest {
 
     @Test
     public void testJobConstructorSetsAllFields(){
-       Job test_job =  new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
        assertTrue(test_job.getEmployer() instanceof Employer);
        assertTrue(test_job.getLocation() instanceof Location);
        assertTrue(test_job.getPositionType() instanceof PositionType);
@@ -34,6 +37,10 @@ public class JobTest {
        assertEquals(test_job.getLocation().getValue(), "Desert");
        assertEquals(test_job.getPositionType().getValue(), "Quality control");
        assertEquals(test_job.getCoreCompetency().getValue(), "Persistence");
+    }
 
+    @Test
+    public void testJobsForEquality(){
+       assertFalse(test_job.equals(test_job_identical));
     }
 }
