@@ -12,6 +12,7 @@ public class JobTest {
     Job test_job_2;
     Job test_job;
     Job test_job_identical;
+    Job test_job_empty_field;
 
     @Before
     public void createJobObject(){
@@ -19,6 +20,7 @@ public class JobTest {
         test_job_2 = new Job();
         test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         test_job_identical = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        test_job_empty_field = test_job_identical = new Job("Product tester", null, new Location("Desert"), null, new CoreCompetency("Persistence"));
     }
 
     @Test
@@ -42,5 +44,28 @@ public class JobTest {
     @Test
     public void testJobsForEquality(){
        assertFalse(test_job.equals(test_job_identical));
+    }
+
+    @Test
+    public void testToStringMethod(){
+        int stringLength = test_job.toString().length();
+        assertEquals(test_job.toString().indexOf("\n"), 0);
+        assertEquals(test_job.toString().substring(stringLength - 1), "\n");
+        assertEquals(test_job.toString(),"\n"
+                + "ID: " + test_job.getId() + "\n"
+                + "Name: " + test_job.getName() + "\n"
+                + "Employer: " + test_job.getEmployer().getValue() + "\n"
+                + "Location: " + test_job.getLocation().getValue() + "\n"
+                + "Position Type: " + test_job.getPositionType().getValue() + "\n"
+                + "Core Competency: " + test_job.getCoreCompetency().getValue() + "\n"
+                + "\n");
+        assertEquals(test_job_empty_field.toString(), "\n"
+                + "ID: " + test_job.getId() + "\n"
+                + "Name: " + test_job.getName() + "\n"
+                + "Employer: Data not available" + "\n"
+                + "Location: " + test_job.getLocation().getValue() + "\n"
+                + "Position Type: Data not available" + "\n"
+                + "Core Competency: " + test_job.getCoreCompetency().getValue() + "\n"
+                + "\n");
     }
 }
