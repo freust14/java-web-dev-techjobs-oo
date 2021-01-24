@@ -94,19 +94,52 @@ public class Job {
     }
     @Override
     public String toString(){
-        if (this.employer.getValue() == null){
-            this.employer.setValue("Data not available");
+        String nameString = this.getName();
+        String employerString = this.getEmployer().getValue();
+        String positionTypeString = this.getPositionType().getValue();
+        String locationString = this.getLocation().getValue();
+        String coreCompetencyString = this.getCoreCompetency().getValue();
+
+        // conditional for null value passed into constructor
+        if (nameString == null){
+            nameString = "Data not available";
         }
-        if (this.getPositionType().getValue() == null) {
-            this.positionType.setValue("Data not available");
+        if (employerString == null){
+            employerString = "Data not available";
+        }
+        if (locationString == null) {
+            locationString = "Data not available";
+        }
+        if (positionTypeString == null) {
+            positionTypeString = "Data not available";
+        }
+        if (coreCompetencyString == null) {
+            coreCompetencyString = "Data not available";
+        }
+
+        //conditional for empty string passed into constructor
+        if (nameString == ""){
+            nameString = "Data not available";
+        }
+        if (employerString == ""){
+            employerString = "Data not available";
+        }
+        if (locationString == "") {
+            locationString = "Data not available";
+        }
+        if (positionTypeString == "") {
+            positionTypeString = "Data not available";
+        }
+        if (coreCompetencyString == "") {
+            coreCompetencyString = "Data not available";
         }
         return "\n"
                 + "ID: " + this.getId() + "\n"
-                + "Name: " + this.getName() + "\n"
-                + "Employer: " + this.getEmployer().getValue() + "\n"
-                + "Location: " + this.getLocation().getValue() + "\n"
-                + "Position Type: " + this.getPositionType().getValue() + "\n"
-                + "Core Competency: " + this.getCoreCompetency().getValue() + "\n"
+                + "Name: " + nameString + "\n"
+                + "Employer: " + employerString + "\n"
+                + "Location: " + locationString + "\n"
+                + "Position Type: " + positionTypeString + "\n"
+                + "Core Competency: " + coreCompetencyString + "\n"
                 + "\n";
     }
 }

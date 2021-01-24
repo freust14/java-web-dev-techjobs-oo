@@ -20,7 +20,7 @@ public class JobTest {
         test_job_2 = new Job();
         test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         test_job_identical = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        test_job_empty_field = test_job_identical = new Job("Product tester", null, new Location("Desert"), null, new CoreCompetency("Persistence"));
+        test_job_empty_field = test_job_identical = new Job("Product tester",  new Employer(""), new Location("Desert"), new PositionType(null), new CoreCompetency("Persistence"));
     }
 
     @Test
@@ -49,8 +49,14 @@ public class JobTest {
     @Test
     public void testToStringMethod(){
         int stringLength = test_job.toString().length();
+
+        // test for blank line before string
         assertEquals(test_job.toString().indexOf("\n"), 0);
+
+        // test for blank line after string
         assertEquals(test_job.toString().substring(stringLength - 1), "\n");
+
+        // test that labels and value are returned, with each field on its own line
         assertEquals(test_job.toString(),"\n"
                 + "ID: " + test_job.getId() + "\n"
                 + "Name: " + test_job.getName() + "\n"
@@ -59,13 +65,12 @@ public class JobTest {
                 + "Position Type: " + test_job.getPositionType().getValue() + "\n"
                 + "Core Competency: " + test_job.getCoreCompetency().getValue() + "\n"
                 + "\n");
-        assertEquals(test_job_empty_field.toString(), "\n"
-                + "ID: " + test_job.getId() + "\n"
-                + "Name: " + test_job.getName() + "\n"
-                + "Employer: Data not available" + "\n"
-                + "Location: " + test_job.getLocation().getValue() + "\n"
-                + "Position Type: Data not available" + "\n"
-                + "Core Competency: " + test_job.getCoreCompetency().getValue() + "\n"
-                + "\n");
+        // test for empty string and return message
+        assertTrue(test_job_empty_field.toString().contains("Employer: Data not available"));
+        // test for null and return message
+        assertTrue(test_job_empty_field.toString().contains("Position Type: Data not available"));
+
+
+
     }
 }
