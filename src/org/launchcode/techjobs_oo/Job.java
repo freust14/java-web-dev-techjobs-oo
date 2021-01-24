@@ -132,7 +132,8 @@ public class Job {
         if (coreCompetencyString == "") {
             coreCompetencyString = "Data not available";
         }
-        return "\n\n"
+        if (nameString != null && employerString != null && locationString != null && positionTypeString != null && coreCompetencyString != null){
+            return "\n\n"
                 + "ID: " + this.getId() + "\n"
                 + "Name: " + nameString + "\n"
                 + "Employer: " + employerString + "\n"
@@ -140,5 +141,7 @@ public class Job {
                 + "Position Type: " + positionTypeString + "\n"
                 + "Core Competency: " + coreCompetencyString + "\n"
                 + "\n";
+    } else return "OOPS! This job does not seem to exist.";
     }
+
 }

@@ -14,6 +14,7 @@ public class JobTest {
     Job test_job_identical;
     Job test_job_empty_field;
 
+
     @Before
     public void createJobObject(){
         test_job_1 = new Job();
@@ -47,7 +48,7 @@ public class JobTest {
     }
 
     @Test
-    public void testToStringMethod(){
+    public void testToStringMethod() {
         int stringLength = test_job.toString().length();
 
         // test for blank line at beginning of string
@@ -57,7 +58,7 @@ public class JobTest {
         assertEquals(test_job.toString().substring(stringLength - 2), "\n\n");
 
         // test that labels and value are returned, with each field on its own line
-        assertEquals(test_job.toString(),"\n\n"
+        assertEquals(test_job.toString(), "\n\n"
                 + "ID: " + test_job.getId() + "\n"
                 + "Name: " + test_job.getName() + "\n"
                 + "Employer: " + test_job.getEmployer().getValue() + "\n"
@@ -69,8 +70,12 @@ public class JobTest {
         assertTrue(test_job_empty_field.toString().contains("Employer: Data not available"));
         // test for null and returned message
         assertTrue(test_job_empty_field.toString().contains("Position Type: Data not available"));
-
-
-
     }
+
+    @Test
+    public void testForIdOnly(){
+        assertEquals(test_job_1.toString(), "OOPS! This job does not seem to exist");
+        }
+
+
 }
