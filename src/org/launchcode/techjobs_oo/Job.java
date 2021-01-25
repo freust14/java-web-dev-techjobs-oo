@@ -101,38 +101,25 @@ public class Job {
         String coreCompetencyString = this.getCoreCompetency().getValue();
 
         // conditional for null value passed into constructor
-        if (nameString == null){
+        if (Objects.isNull(nameString) || nameString == ""){
             nameString = "Data not available";
         }
-        if (employerString == null){
+        if (Objects.isNull(employerString) || employerString == ""){
             employerString = "Data not available";
         }
-        if (locationString == null) {
+        if (Objects.isNull(locationString) || locationString == "") {
             locationString = "Data not available";
         }
-        if (positionTypeString == null) {
+        if (Objects.isNull(positionTypeString) || positionTypeString == "") {
             positionTypeString = "Data not available";
         }
-        if (coreCompetencyString == null) {
+        if (Objects.isNull(coreCompetencyString) || coreCompetencyString == "") {
             coreCompetencyString = "Data not available";
         }
-        //conditional for empty string passed into constructor
-        if (nameString == ""){
-            nameString = "Data not available";
+        if (Objects.isNull(nameString) && Objects.isNull(employerString) && Objects.isNull(locationString)
+                && Objects.isNull(positionTypeString) && Objects.isNull(coreCompetencyString)) {
+            return "OOPS! This job does not seem to exist.";
         }
-        if (employerString == ""){
-            employerString = "Data not available";
-        }
-        if (locationString == "") {
-            locationString = "Data not available";
-        }
-        if (positionTypeString == "") {
-            positionTypeString = "Data not available";
-        }
-        if (coreCompetencyString == "") {
-            coreCompetencyString = "Data not available";
-        }
-        if (nameString != null && employerString != null && locationString != null && positionTypeString != null && coreCompetencyString != null){
             return "\n\n"
                 + "ID: " + this.getId() + "\n"
                 + "Name: " + nameString + "\n"
@@ -141,7 +128,7 @@ public class Job {
                 + "Position Type: " + positionTypeString + "\n"
                 + "Core Competency: " + coreCompetencyString + "\n"
                 + "\n";
-    } else return "OOPS! This job does not seem to exist.";
+
     }
 
 }
