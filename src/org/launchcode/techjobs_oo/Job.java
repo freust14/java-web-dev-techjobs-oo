@@ -92,43 +92,45 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
     @Override
-    public String toString(){
-        String nameString = this.getName();
-        String employerString = this.getEmployer().getValue();
-        String positionTypeString = this.getPositionType().getValue();
-        String locationString = this.getLocation().getValue();
-        String coreCompetencyString = this.getCoreCompetency().getValue();
+        public String toString () {
+        try {
+            String nameString = this.getName();
+            String employerString = this.getEmployer().getValue();
+            String positionTypeString = this.getPositionType().getValue();
+            String locationString = this.getLocation().getValue();
+            String coreCompetencyString = this.getCoreCompetency().getValue();
 
-        // conditional for null value passed into constructor
-        if (Objects.isNull(nameString) || nameString == ""){
-            nameString = "Data not available";
-        }
-        if (Objects.isNull(employerString) || employerString == ""){
-            employerString = "Data not available";
-        }
-        if (Objects.isNull(locationString) || locationString == "") {
-            locationString = "Data not available";
-        }
-        if (Objects.isNull(positionTypeString) || positionTypeString == "") {
-            positionTypeString = "Data not available";
-        }
-        if (Objects.isNull(coreCompetencyString) || coreCompetencyString == "") {
-            coreCompetencyString = "Data not available";
-        }
-//        if (Objects.isNull(nameString) && Objects.isNull(employerString) && Objects.isNull(locationString)
-//                && Objects.isNull(positionTypeString) && Objects.isNull(coreCompetencyString)) {
-//            return "OOPS! This job does not seem to exist.";
-//        }
+            // conditional for null value passed into constructor
+            if (Objects.isNull(nameString) || nameString == "") {
+                nameString = "Data not available";
+            }
+            if (Objects.isNull(employerString) || employerString == "") {
+                employerString = "Data not available";
+            }
+            if (Objects.isNull(locationString) || locationString == "") {
+                locationString = "Data not available";
+            }
+            if (Objects.isNull(positionTypeString) || positionTypeString == "") {
+                positionTypeString = "Data not available";
+            }
+            if (Objects.isNull(coreCompetencyString) || coreCompetencyString == "") {
+                coreCompetencyString = "Data not available";
+            }
             return "\n\n"
-                + "ID: " + this.getId() + "\n"
-                + "Name: " + nameString + "\n"
-                + "Employer: " + employerString + "\n"
-                + "Location: " + locationString + "\n"
-                + "Position Type: " + positionTypeString + "\n"
-                + "Core Competency: " + coreCompetencyString + "\n"
-                + "\n";
-
-    }
-
+                    + "ID: " + this.getId() + "\n"
+                    + "Name: " + nameString + "\n"
+                    + "Employer: " + employerString + "\n"
+                    + "Location: " + locationString + "\n"
+                    + "Position Type: " + positionTypeString + "\n"
+                    + "Core Competency: " + coreCompetencyString + "\n"
+                    + "\n";
+        }
+        catch (Exception e){
+        return "OOPS! This job does not seem to exist.";
+        }
+        }
 }
+
+

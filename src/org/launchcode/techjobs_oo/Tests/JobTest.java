@@ -72,10 +72,10 @@ public class JobTest {
         assertTrue(test_job_empty_field.toString().contains("Position Type: Data not available"));
     }
 
-//    @Test
-//    public void testForIdOnly(){
-//        assertEquals(test_job_1.toString(), "OOPS! This job does not seem to exist");
-//        }
-//
+    @Test
+    public void testForIdOnly(){
+        assertEquals(test_job_1.toString(), "OOPS! This job does not seem to exist.");
+        }
+
 
 }
