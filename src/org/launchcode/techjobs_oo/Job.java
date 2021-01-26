@@ -116,10 +116,10 @@ public class Job {
         if (Objects.isNull(coreCompetencyString) || coreCompetencyString == "") {
             coreCompetencyString = "Data not available";
         }
-        if (Objects.isNull(nameString) && Objects.isNull(employerString) && Objects.isNull(locationString)
-                && Objects.isNull(positionTypeString) && Objects.isNull(coreCompetencyString)) {
-            return "OOPS! This job does not seem to exist.";
-        }
+//        if (Objects.isNull(nameString) && Objects.isNull(employerString) && Objects.isNull(locationString)
+//                && Objects.isNull(positionTypeString) && Objects.isNull(coreCompetencyString)) {
+//            return "OOPS! This job does not seem to exist.";
+//        }
             return "\n\n"
                 + "ID: " + this.getId() + "\n"
                 + "Name: " + nameString + "\n"
