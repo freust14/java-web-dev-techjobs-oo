@@ -102,20 +102,20 @@ public class Job {
             String locationString = this.getLocation().getValue();
             String coreCompetencyString = this.getCoreCompetency().getValue();
 
-            // conditional for null value passed into constructor
-            if (Objects.isNull(nameString) || nameString == "") {
+            // conditional for null value passed into constructor; can this be shortened?
+            if (Objects.isNull(nameString) || nameString.equals("")) {
                 nameString = "Data not available";
             }
-            if (Objects.isNull(employerString) || employerString == "") {
+            if (Objects.isNull(employerString) || employerString.equals("")) {
                 employerString = "Data not available";
             }
-            if (Objects.isNull(locationString) || locationString == "") {
+            if (Objects.isNull(locationString) || locationString.equals("")) {
                 locationString = "Data not available";
             }
-            if (Objects.isNull(positionTypeString) || positionTypeString == "") {
+            if (Objects.isNull(positionTypeString) || positionTypeString.equals("")) {
                 positionTypeString = "Data not available";
             }
-            if (Objects.isNull(coreCompetencyString) || coreCompetencyString == "") {
+            if (Objects.isNull(coreCompetencyString) || coreCompetencyString.equals("")) {
                 coreCompetencyString = "Data not available";
             }
             return "\n"

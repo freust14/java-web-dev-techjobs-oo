@@ -31,6 +31,7 @@ public class JobTest {
 
     @Test
     public void testJobConstructorSetsAllFields(){
+       assertTrue(test_job.getName() instanceof String);
        assertTrue((test_job.getEmployer() instanceof Employer));
        assertTrue((test_job.getLocation() instanceof Location));
        assertTrue((test_job.getPositionType() instanceof PositionType));
@@ -65,9 +66,9 @@ public class JobTest {
                 + "Location: " + test_job.getLocation().getValue() + "\n"
                 + "Position Type: " + test_job.getPositionType().getValue() + "\n"
                 + "Core Competency: " + test_job.getCoreCompetency().getValue() + "\n");
-        // test for empty string and returned message
+        // test for empty string field and returned message
         assertTrue(test_job_empty_field.toString().contains("Employer: Data not available"));
-        // test for null and returned message
+        // test for null field and returned message
         assertTrue(test_job_empty_field.toString().contains("Position Type: Data not available"));
     }
 
@@ -75,6 +76,5 @@ public class JobTest {
     public void testForIdOnly(){
         assertEquals(test_job_1.toString(), "OOPS! This job does not seem to exist.");
         }
-
 
 }
