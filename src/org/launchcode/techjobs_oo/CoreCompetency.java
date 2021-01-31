@@ -52,4 +52,6 @@ public class CoreCompetency {
     public int getId() {
         return id;
     }
+
+    //test commit type//
 }
