@@ -53,5 +53,5 @@ public class CoreCompetency {
         return id;
     }
 
-    //test commit type//
+
 }
