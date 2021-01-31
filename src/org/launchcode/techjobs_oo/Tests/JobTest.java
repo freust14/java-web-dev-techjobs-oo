@@ -52,20 +52,19 @@ public class JobTest {
         int stringLength = test_job.toString().length();
 
         // test for blank line at beginning of string
-        assertEquals(test_job.toString().indexOf("\n\n"), 0);
+        assertEquals(test_job.toString().indexOf("\n"), 0);
 
         // test for blank line at end of string
-        assertEquals(test_job.toString().substring(stringLength - 2), "\n\n");
+        assertEquals(test_job.toString().substring(stringLength - 1), "\n");
 
         // test that labels and value are returned, with each field on its own line
-        assertEquals(test_job.toString(), "\n\n"
+        assertEquals(test_job.toString(), "\n"
                 + "ID: " + test_job.getId() + "\n"
                 + "Name: " + test_job.getName() + "\n"
                 + "Employer: " + test_job.getEmployer().getValue() + "\n"
                 + "Location: " + test_job.getLocation().getValue() + "\n"
                 + "Position Type: " + test_job.getPositionType().getValue() + "\n"
-                + "Core Competency: " + test_job.getCoreCompetency().getValue() + "\n"
-                + "\n");
+                + "Core Competency: " + test_job.getCoreCompetency().getValue() + "\n");
         // test for empty string and returned message
         assertTrue(test_job_empty_field.toString().contains("Employer: Data not available"));
         // test for null and returned message

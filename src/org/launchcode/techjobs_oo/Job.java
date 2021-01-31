@@ -118,14 +118,13 @@ public class Job {
             if (Objects.isNull(coreCompetencyString) || coreCompetencyString == "") {
                 coreCompetencyString = "Data not available";
             }
-            return "\n\n"
+            return "\n"
                     + "ID: " + this.getId() + "\n"
                     + "Name: " + nameString + "\n"
                     + "Employer: " + employerString + "\n"
                     + "Location: " + locationString + "\n"
                     + "Position Type: " + positionTypeString + "\n"
-                    + "Core Competency: " + coreCompetencyString + "\n"
-                    + "\n";
+                    + "Core Competency: " + coreCompetencyString + "\n";
         }
         //returns message if all fields but id are null
         catch (NullPointerException e){
