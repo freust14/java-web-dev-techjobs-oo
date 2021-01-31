@@ -12,8 +12,6 @@ public class JobTest {
     Job test_job_2;
     Job test_job;
     Job test_job_identical;
-    Job test_job_empty_field;
-
 
     @Before
     public void createJobObject(){
@@ -21,7 +19,6 @@ public class JobTest {
         test_job_2 = new Job();
         test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         test_job_identical = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        test_job_empty_field = new Job("Product tester",  new Employer(""), new Location("Desert"), new PositionType(null), new CoreCompetency("Persistence"));
     }
 
     @Test
@@ -67,6 +64,8 @@ public class JobTest {
                 + "Position Type: " + test_job.getPositionType().getValue() + "\n"
                 + "Core Competency: " + test_job.getCoreCompetency().getValue() + "\n");
         // test for empty string field and returned message
+        Job test_job_empty_field = new Job("Product tester",  new Employer(""), new Location("Desert"), new PositionType(null), new CoreCompetency("Persistence"));
+
         assertTrue(test_job_empty_field.toString().contains("Employer: Data not available"));
         // test for null field and returned message
         assertTrue(test_job_empty_field.toString().contains("Position Type: Data not available"));
