@@ -127,7 +127,8 @@ public class Job {
                     + "Core Competency: " + coreCompetencyString + "\n"
                     + "\n";
         }
-        catch (Exception e){
+        //returns message if all fields but id are null
+        catch (NullPointerException e){
         return "OOPS! This job does not seem to exist.";
         }
         }
